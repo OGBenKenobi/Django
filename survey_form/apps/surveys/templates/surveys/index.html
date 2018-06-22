@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    
+        <title>Survey Form</title>
+    
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
+        
+        {% load static %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{% static 'game/css/main.css' %}" />
+        <script type="text/javascript" src="{% static 'game/js/main.js' %} "></script>
+    </head>
+<body class="bg-dark text-light">
+    <div class="container">
+        <h1 class="text-center">Dojo Survey</h1>
+        <form action="/submit" method="POST">
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                <input name="name" type="text" class="form-control" id="name" placeholder="Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="location" class="col-sm-2 col-form-label">Location</label>
+                <div class="col-sm-10">
+                    <select name="location" class="form-control form-control-md">
+                        <option>Stankonia</option>
+                        <option>Trillville</option>
+                        <option>Space City</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="language" class="col-sm-2 col-form-label">Favorite Language</label>
+                <div class="col-sm-10">
+                    <select name="language" class="form-control form-control-md">
+                        <option>Vulkan</option>
+                        <option>Dothraki</option>
+                        <option>Ebonics</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="comments">Comment (optional):</label>
+                <textarea name="comments" class="form-control" id="comments" rows="3"></textarea>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

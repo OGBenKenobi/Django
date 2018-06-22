@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    
+        <title>Session Words</title>
+    
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
+        
+        {% load static %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{% static 'surveys/css/main.css' %}" />
+        <script type="text/javascript" src="{% static 'surveys/js/main.js' %} "></script>
+    </head>
+<body class="bg-dark text-light">
+    <div class="container">
+        <div class="row">
+            <div class="lefthand col-md-6">
+                <div class="row">
+                    <h1>Add a new word</h1>
+                </div>
+                <form action="/sess/add/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for=word""></label>
+                      <input name="word" type="text" class="form-control"  aria-describedby="helpId"><small id="helpId" class="form-text text-muted"></small>
+                    </div>
+                    <p>Choose Color</p>
+                    <div class="radio form-check">
+                    <input name="color" class="form-check-input" type="radio"  id="exampleRadios1" value="red" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Red
+                    </label>
+                    </div>
+                    <div class="radio form-check">
+                    <input name="color" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="green">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Green
+                    </label>
+                    </div>
+                    <div class="radio form-check disabled">
+                    <input name="color" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="blue">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Blue
+                    </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input name="big" type="checkbox" class="form-check-input"  id="" value="showbig">
+                        show in BIG fonts!
+                      </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add to Session</button>
+                </form>
+            </div>
+            <div class="righthand col-md-6">
+                <div class="row">
+                    <a class="btn btn-dark" href="clear/" role="button">Clear Session</a>
+                </div>
+                <div class="activity row">
+                    <div class="col-12">
+                        {% for i in request.session.activity %}
+                            {{i |safe}}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

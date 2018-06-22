@@ -1,0 +1,14 @@
+*{
+    margin: 0px;
+    padding: 0pz;
+}
+label{
+    text-align: right;
+}
+.error{
+    font-size: 10px;
+    color: red;
+}
+p{
+    color: green;
+}
