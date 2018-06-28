@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Books Add</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'login_registration/css/main.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'login_registration/js/main.js' %} "></script>
+</head>
+<body>
+    <div class="container">
+        <div class="top-row row">
+            <nav class="nav justify-content-end col-md-12">
+                <a class="nav-link" href="/books/">Home</a>
+                <a class="nav-link" href="/logout/">Logout</a>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Add a New Book Title and Review:</h4>
+                <form class="offset-md-1" action="addbooks/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                        <label class="labels" for="title">Book Title:</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input name="title" type="text" class="form-control" id="title" >
+                        </div>
+                    </div>
+                    <h5>Author:</h5>
+                    <div class="form-row">
+                        <div class="form-group col-md-4 offset-md-1 ">
+                            <label for="author">Choose from the list:</label>
+                        </div>
+                        <div class="form-group col-md-7 ">
+                            <select name="author" id="author" class="form-control">
+                                <option selected>Choose...</option>
+                                {% for book in books%}
+                                <option>{{ book.author }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4 offset-md-1 ">
+                            <label for="newauthor">Or add a new author:</label>
+                            
+                        </div>
+                        <div class="form-group col-md-7 ">
+                            <div class="form-group">
+                              <input name="newauthor"t type="text" class="form-control"  id="newauthor">
+                            </div>
+                            {% if messages %} {% for message in messages %}
+                            {% if message.tags == 'author error' %} <p class="error">{{ message }}</p> {% endif %}
+                            {% endfor %} {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2 ">
+                            <label class="labels" for="review">Review:</label>
+                        </div>
+                        <div class="form-group col-md-7 ">
+                            <div class="form-group">
+                              <label class="labels" for="review"></label>
+                              <textarea name="review" class="form-control"  id="review" rows="4" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2 ">
+                            <label class="labels" for="rating">Rating:</label>
+                        </div>
+                        <div class="form-group col-md-1 ">
+                           <select name="rating" id="rating" class="form-control-sm">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                           </select>
+                        </div>
+                        <div class="form-group col-md-2 ">
+                            <p> stars.</p>
+                        </div>
+                    </div>
+                    <button type="submit" class="float-right btn btn-primary">Add Book and Review</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

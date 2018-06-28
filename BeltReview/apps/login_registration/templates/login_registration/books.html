@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'login_registration/css/main.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'login_registration/js/main.js' %} "></script>
+</head>
+<body>
+    <div class="container">
+        <div class="top-row row">
+            <div class="col-md-6">
+                <h3>Success! Welcome, {{ request.session.first_name }}</h3>
+            </div>
+            <nav class="nav justify-content-end col-md-6">
+                <a class="nav-link" href="add/">Add Book and Review</a>
+                <a class="nav-link" href="/logout/">Logout</a>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Recent Book Reviews:</h4>
+                {% for review in reviews %}
+                <ul class="list-unstyled">
+                    <li><a href="/book/{{review.book.id}}">{{review.book.name}}</a></li>
+                    <li>
+                        <ul class="list-unstyled">
+                            <li>Rating: {{review.rating}}/5</li>
+                            <li><a href="/users/{{request.session.id}}">{{review.user.first_name}}</a> says: "{{review.review}}"</li>
+                            <li>Posted on {{ review.updated_at }}</li>
+                        </ul>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+            <div class="col-md-4">
+                <h4>Other Books with Reviews:</h4>
+                <div class="reviewslist overflow">
+                    {% for review in reviewed_books %}
+                    <a class="all_reviews" href="/book/{{review.id}}">{{review.name}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'login_registration/css/main.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'login_registration/js/main.js' %} "></script>
+</head>
+<body>
+    <div class="container">
+        <div class="top-row row">
+            <nav class="nav justify-content-end col-md-12">
+                <a class="nav-link" href="/books/">Home</a>
+                <a class="nav-link" href="/books/add/">Add Book and Review</a>
+                <a class="nav-link" href="/logout/">Logout</a>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <h4>User Alias: {{ user.first_name }}</h4>
+                <h4>Name: {{ user.first_name }} {{ user.last_name }}</h4>
+                <h4>Email: {{ user.email|upper }} </h4>
+                <h4>Total Reviews: {{ cnt }} </h4>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-md">
+                    <h4>Posted Reviews on the following books:</h4>
+                    <div class="offset-md-1">
+                        {% for book in books %}
+                        <a class="all_reviews" href="/book/{{book.id}}">{{book.name}}</a>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>
+
