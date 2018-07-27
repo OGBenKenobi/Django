@@ -17,17 +17,17 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
         
         {% load static %}
-        <link rel="stylesheet" type="text/css" media="screen" href="{% static 'surveys/css/main.css' %}" />
-        <script type="text/javascript" src="{% static 'surveys/js/main.js' %} "></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="{% static 'session_words/css/main.css' %}" />
+        <script type="text/javascript" src="{% static 'session_words/js/main.js' %} "></script>
     </head>
-<body class="bg-dark text-light">
+<body>
     <div class="container">
         <div class="row">
             <div class="lefthand col-md-6">
                 <div class="row">
                     <h1>Add a new word</h1>
                 </div>
-                <form action="/sess/add/" method="POST">
+                <form action="add/" method="POST">
                     {% csrf_token %}
                     <div class="form-group">
                       <label for=word""></label>
@@ -35,20 +35,20 @@
                     </div>
                     <p>Choose Color</p>
                     <div class="radio form-check">
-                    <input name="color" class="form-check-input" type="radio"  id="exampleRadios1" value="red" checked>
-                    <label class="form-check-label" for="exampleRadios1">
+                    <input name="color" class="form-check-input" type="radio"  id="red" value="red" checked>
+                    <label class="form-check-label" for="red">
                         Red
                     </label>
                     </div>
                     <div class="radio form-check">
-                    <input name="color" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="green">
-                    <label class="form-check-label" for="exampleRadios2">
+                    <input name="color" class="form-check-input" type="radio" id="greem" value="green">
+                    <label class="form-check-label" for="greem">
                         Green
                     </label>
                     </div>
                     <div class="radio form-check disabled">
-                    <input name="color" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="blue">
-                    <label class="form-check-label" for="exampleRadios3">
+                    <input name="color" class="form-check-input" type="radio" id="blue" value="blue">
+                    <label class="form-check-label" for="blue">
                         Blue
                     </label>
                     </div>

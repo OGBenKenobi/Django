@@ -13,7 +13,7 @@ def buy(request):
         request.session['total'] = Product.objects.get(id= request.POST['prod']).price * float(request.POST['quantity'])
     else:
         request.session['total'] = request.session['total'] + (Product.objects.get(id= request.POST['prod']).price * float(request.POST['quantity']))
-    request.session['charged'] = Product.objects.get(id= request.POST['prod']).price
+        request.session['charged'] = Product.objects.get(id= request.POST['prod']).price
     return redirect('/amadon/checkout')
 
 def checkout(request):

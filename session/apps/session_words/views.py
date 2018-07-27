@@ -15,8 +15,8 @@ def add(request):
         request.session['activity'] = request.session['activity'] + [f'<p class="{request.POST["color"]}">{request.POST["word"]}<span>-- {now}</span></p>']
     
     print(request.session['activity'])
-    return redirect('/sess/words')
+    return redirect('/words')
 
 def clear(request):
     request.session.flush()
-    return redirect('/sess/words')
+    return redirect('/words')

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">       
+        
+        <title>Jquery Functions</title>
+    
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
+        
+        {% load static %}
+        <!-- My CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static 'jquery/css/jquery_main.css'%}">
+        <!-- My Javascript -->
+        <script type="text/javascript" src="{% static 'jquery/js/jquery_main.js'%}"></script>
+    </head>
+<body class="container bg-dark text-light text-center">
+    <h1>jQuery Practice</h1>
+    <hr>
+    <h2 class="col-10 offset-2">Click</h2>
+    <div class="row">
+        <button class="btn btn-primary bc_click col-2">Click</button>
+        <p class="col-10">Click button for a reaction...</p>
+    </div>
+    <hr>
+    <h2 class="col-10 offset-2">Hide</h2>
+    <div class="row">
+        <button class="btn btn-primary bc_hide col-2">Hide</button>
+        <p class="col-10 bc_hide">Click the button to hide me!</p>
+    </div>
+    <hr>
+    <h2 class="col-10 offset-2">Show</h2>
+    <div class="row">
+        <button class="btn btn-primary bc_show col-2">Show</button>
+        <p class="col-10">Click the button to make the sentence above appear again!</p>
+    </div>
+    <hr>
+    <h2 class="col-10 offset-2">Toggle</h2>
+    <div class="row">
+        <button class="btn btn-primary bc_toggle col-2">Toggle</button>
+        <p class="col-10 bc_toggle">Click the button to toggle me!</p>
+    </div>
+    <hr>
+    <h2 class="bc_slide col-10 offset-2">Slide Down</h2>
+    <div class="row">
+        <button class="bc_slide btn btn-primary col-2">Slide Down</button>
+        <p class="col-10">Click the button to make subtitle slide down!</p>
+    </div>
+    <hr>
+    <h2 class="bc_slideUp col-10 offset-2">Slide Up</h2>
+    <div class="row">
+        <button class="bc_slideUp btn btn-primary col-2">Slide Up</button>
+        <p class="col-10">Click the button to make the subtitle slide up!</p>
+    </div>
+</body>
+</html>
